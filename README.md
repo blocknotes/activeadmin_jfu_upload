@@ -48,6 +48,11 @@ Why 2 separated scripts? In this way you can include a different version of *jQu
   end
 ```
 
+```ruby
+# Chuncked upload (chunk size: 100 Kb)
+f.input :cover, as: :jfu_upload, hint: f.object.cover? ? image_tag( f.object.cover.url ) : '', input_html: { data: { url: jfu_upload_admin_article_path( resource.id ), options: { maxChunkSize: 100000 } } } unless f.object.new_record?
+```
+
 ## Notes
 
 If you want to customize the upload action take a look [here](lib/activeadmin/jfu_upload/engine.rb)
