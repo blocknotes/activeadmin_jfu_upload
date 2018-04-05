@@ -6,6 +6,7 @@ $(document).ready( function() {
         // data.context = $('<p/>').text('Uploading...').appendTo(document.body);
         // data.submit();
         $(e.target).next().html('<li class="jfu_loading">Uploading...</li>');
+        data.submit();
       },
       done: function (e, data) {
         if( data.result.result == 1 ) {
