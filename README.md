@@ -55,9 +55,11 @@ f.input :cover, as: :jfu_upload, hint: f.object.cover? ? image_tag( f.object.cov
 
 ## Notes
 
-If you want to customize the upload action take a look [here](lib/activeadmin/jfu_upload/engine.rb)
+- The string field for the upload is used to store temp data, so it could be necessary to make it bigger
 
-Tested with CarrierWave uploader gem.
+- If you want to customize the upload action take a look [here](lib/activeadmin/jfu_upload/engine.rb)
+
+- Tested only with CarrierWave uploader gem
 
 ## Do you like it? Star it!
 
