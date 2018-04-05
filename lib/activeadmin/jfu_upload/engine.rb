@@ -20,17 +20,17 @@ module ActiveAdmin
                   # resource.update field => param
                   dir = Rails.root.join('tmp', 'uploads')
                   dir.mkdir unless File.exists?(dir)
-                  @@last_filename = param.original_filename  # TODO: fix me!
-                  resource.update_column field, dir.join(param.tempfile).to_s  # alternative: "#{resource.class.to_s.tableize}_#{resource.id}_#{Time.now.to_i}"
-                  # else
-                  #   File.open( resource.try( field ).try( :path ), 'ab' ) { |f| f.write( param.read ) }
+                  field_data = { original_filename: param.original_filename, tempfile: dir.join(param.tempfile).to_s }  # alternative: "#{resource.class.to_s.tableize}_#{resource.id}_#{Time.now.to_i}"
+                  resource.update_column field, YAML::dump( field_data )
+                else
+                  field_data = YAML::load resource.read_attribute(field)
+                  # File.open( resource.try( field ).try( :path ), 'ab' ) { |f| f.write( param.read ) }
                 end
-                File.open(resource.read_attribute(field), 'ab') { |f| f.write(param.read) }
+                File.open(field_data[:tempfile], 'ab') { |f| f.write(param.read) }
                 if ( m[2].to_i + 1 ) == m[3].to_i
-                  file = resource.read_attribute(field)
-                  path = Pathname.new file
-                  dst = path.dirname.join(@@last_filename).to_s
-                  File.rename(file, dst)
+                  path = Pathname.new field_data[:tempfile]
+                  dst = path.dirname.join(field_data[:original_filename]).to_s
+                  File.rename(field_data[:tempfile], dst)
                   resource.send("#{field}=", File.open(dst))
                   resource.save
                   response = { result: 1, pos: m[3].to_i, file_name: resource.try(field).try(:url) }
