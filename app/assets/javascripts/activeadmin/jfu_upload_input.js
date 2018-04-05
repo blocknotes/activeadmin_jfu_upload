@@ -10,12 +10,13 @@ $(document).ready( function() {
       },
       done: function (e, data) {
         if( data.result.result == 1 ) {
-          $(e.target).next().html('<li class="jfu_file">' + data.result.file_name + '</li>');
+          $(e.target).next().html('<li class="jfu_done">Upload complete!</li>');
+          // $(e.target).next().html('<li class="jfu_file">' + data.result.file_name + '</li>');
         }
       },
       progressall: function (e, data) {
         var progress = parseInt(data.loaded / data.total * 100, 10);
-        console.log(progress);
+        $(e.target).next().html('<li class="jfu_done">Upload: ' + progress + '</li>');
         // $('#progress .bar').css(
         //   'width',
         //   progress + '%'
