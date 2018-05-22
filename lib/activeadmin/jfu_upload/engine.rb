@@ -15,6 +15,7 @@ module ActiveAdmin
             else
               m = request.headers['CONTENT-RANGE'].match( /[^\s]+\s(\d+)-(\d+)\/(\d+)/ )
               if m
+                buffer = param.read
                 pos = m[1].to_i
                 if pos == 0
                   # resource.update field => param
@@ -24,9 +25,9 @@ module ActiveAdmin
                   resource.update_column field, YAML::dump( field_data )
                 else
                   field_data = YAML::load resource.read_attribute(field)
-                  # File.open( resource.try( field ).try( :path ), 'ab' ) { |f| f.write( param.read ) }
+                  # File.open( resource.try( field ).try( :path ), 'ab' ) { |f| f.write( buffer ) }
                 end
-                File.open(field_data[:tempfile], 'ab') { |f| f.write(param.read) }
+                File.open(field_data[:tempfile], 'ab') { |f| f.write(buffer) }
                 if ( m[2].to_i + 1 ) == m[3].to_i
                   path = Pathname.new field_data[:tempfile]
                   dst = path.dirname.join(field_data[:original_filename]).to_s
