@@ -18,16 +18,16 @@ module ActiveAdmin
                 buffer = param.read
                 pos = m[1].to_i
                 if pos == 0
-                  # resource.update field => param
                   dir = Rails.root.join('tmp', 'uploads')
                   dir.mkdir unless File.exists?(dir)
                   field_data = { original_filename: param.original_filename, tempfile: dir.join(param.tempfile).to_s }  # alternative: "#{resource.class.to_s.tableize}_#{resource.id}_#{Time.now.to_i}"
                   resource.update_column field, YAML::dump( field_data )
+                  mode = 'wb'
                 else
                   field_data = YAML::load resource.read_attribute(field)
-                  # File.open( resource.try( field ).try( :path ), 'ab' ) { |f| f.write( buffer ) }
+                  mode = 'ab'
                 end
-                File.open(field_data[:tempfile], 'ab') { |f| f.write(buffer) }
+                File.open(field_data[:tempfile], mode) { |f| f.write(buffer) }
                 if ( m[2].to_i + 1 ) == m[3].to_i
                   path = Pathname.new field_data[:tempfile]
                   dst = path.dirname.join(field_data[:original_filename]).to_s
