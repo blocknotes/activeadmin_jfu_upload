@@ -18,9 +18,10 @@ module ActiveAdmin
                 buffer = param.read
                 pos = m[1].to_i
                 if pos == 0
-                  dir = Rails.root.join('public', 'uploads')
-                  dir.mkdir unless File.exists?(dir)
-                  field_data = { original_filename: param.original_filename, tempfile: dir.join(param.tempfile).to_s }  # alternative: "#{resource.class.to_s.tableize}_#{resource.id}_#{Time.now.to_i}"
+                  tempfile = Rails.root.join('tmp', "upload_#{Time.now.to_i}_#{resource.id}_#{field}")
+                  field_data = { original_filename: param.original_filename, tempfile: tempfile }
+                  # dir.mkdir unless File.exists?(dir)
+                  # field_data = { original_filename: param.original_filename, tempfile: dir.join(param.tempfile).to_s }  # alternative: "#{resource.class.to_s.tableize}_#{resource.id}_#{Time.now.to_i}"
                   resource.update_column field, YAML::dump( field_data )
                   mode = 'wb'
                 else
