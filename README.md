@@ -1,4 +1,4 @@
-# ActiveAdmin jQuery-File-Upload [![Gem Version](https://badge.fury.io/rb/activeadmin_jfu_upload.svg)](https://badge.fury.io/rb/activeadmin_jfu_upload)
+# ActiveAdmin jQuery-File-Upload [![Gem Version](https://badge.fury.io/rb/activeadmin_jfu_upload.svg)](https://badge.fury.io/rb/activeadmin_jfu_upload) [![CircleCI](https://circleci.com/gh/blocknotes/activeadmin_jfu_upload.svg?style=svg)](https://circleci.com/gh/blocknotes/activeadmin_jfu_upload)
 
 An ActiveAdmin 2.x plugin to use [jQuery-File-Upload](https://github.com/blueimp/jQuery-File-Upload) for file uploads in forms.
 
