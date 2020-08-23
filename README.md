@@ -1,6 +1,6 @@
 # ActiveAdmin jQuery-File-Upload [![Gem Version](https://badge.fury.io/rb/activeadmin_jfu_upload.svg)](https://badge.fury.io/rb/activeadmin_jfu_upload)
 
-An ActiveAdmin plugin to use [jQuery-File-Upload](https://github.com/blueimp/jQuery-File-Upload) for file uploads in forms.
+An ActiveAdmin 2.x plugin to use [jQuery-File-Upload](https://github.com/blueimp/jQuery-File-Upload) for file uploads in forms.
 
 Features:
 - AJAX uploads
@@ -17,7 +17,7 @@ The file is uploaded when selected, not when the form is submitted, that's why a
 ```
 - Add at the end of your ActiveAdmin javascripts (_app/assets/javascripts/active_admin.js_):
 ```js
-//= require activeadmin/jfu_upload/jquery.fileupload.js
+//= require activeadmin/jfu_upload/jquery.fileupload
 //= require activeadmin/jfu_upload_input
 ```
 - Use the input with `as: :jfu_upload` in Active Admin model conf
@@ -56,10 +56,9 @@ f.input :cover, as: :jfu_upload, hint: f.object.cover? ? image_tag( f.object.cov
 ## Notes
 
 - The string field for the upload is used to store temp data, so it could be necessary to make it bigger
-
 - If you want to customize the upload action take a look [here](lib/activeadmin/jfu_upload/engine.rb)
-
 - Tested only with CarrierWave uploader gem
+- To use this plugins with ActiveAdmin 1.x please use the version 0.1.8
 
 ## Do you like it? Star it!
 

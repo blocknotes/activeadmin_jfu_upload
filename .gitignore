@@ -1,3 +1,4 @@
+*.gem
 *.orig
 
 /.rspec_failures

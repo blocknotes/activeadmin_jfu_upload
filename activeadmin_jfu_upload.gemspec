@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'mat@blocknot.es'
   spec.homepage      = 'https://github.com/blocknotes/activeadmin_jfu_upload'
 
-  spec.files         = `git ls-files -z`.split("\x0")
+  spec.files         = Dir['{app,lib}/**/*', 'LICENSE.txt', 'Rakefile', 'README.md']
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'activeadmin', '~> 2.0'
