@@ -38,7 +38,7 @@ ActiveAdmin.register Author do
       f.input :email
       f.input :age
       f.input :avatar,
-              as: :file,
+              as: :jfu_upload,
               hint: (object.avatar.attached? ? "Current: #{object.avatar.filename}" : nil)
     end
     f.has_many :profile, allow_destroy: true do |ff|
