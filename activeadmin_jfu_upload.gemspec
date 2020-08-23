@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'activestorage', '~> 6.0.3.2'
   spec.add_development_dependency 'capybara', '~> 3.33.0'
+  spec.add_development_dependency 'pry', '~> 0.13.1'
   spec.add_development_dependency 'puma', '~> 4.3.5'
   spec.add_development_dependency 'rspec-rails', '~> 4.0.1'
   spec.add_development_dependency 'selenium-webdriver', '~> 3.142.7'

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'simplecov' if ENV['COVERAGE'] == 'true'
+require 'simplecov'
 
 RSpec.configure do |config|
   config.disable_monkey_patching!

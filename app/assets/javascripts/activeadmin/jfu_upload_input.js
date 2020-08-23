@@ -8,9 +8,7 @@ $(document).ready( function() {
         data.context.focus();
       },
       done: function(e, data) {
-        if( data.result.result == 1 ) {
-          $(e.target).next().html('<li class="jfu_info jfu_done"> Upload complete! </li>');  // data.result.file_name
-        }
+        $(e.target).next().html('<li class="jfu_info jfu_done"> Upload complete! </li>');  // data.result.file_name
       },
       progressall: function(e, data) {
         var progress = parseInt(data.loaded / data.total * 100, 10);
