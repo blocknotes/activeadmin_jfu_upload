@@ -1,4 +1,6 @@
-lib = File.expand_path('../lib', __FILE__)
+# frozen_string_literal: true
+
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'activeadmin/jfu_upload/version'
 
@@ -23,6 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'puma', '~> 4.3'
   spec.add_development_dependency 'rspec_junit_formatter', '~> 0.4'
   spec.add_development_dependency 'rspec-rails', '~> 4.0'
+  spec.add_development_dependency 'rubocop', '~> 0.90'
   spec.add_development_dependency 'sassc', '~> 2.4'
   spec.add_development_dependency 'selenium-webdriver', '~> 3.142'
   spec.add_development_dependency 'simplecov', '~> 0.19'

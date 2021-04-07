@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Formtastic
   module Inputs
     class JfuUploadInput < Formtastic::Inputs::FileInput
@@ -8,10 +10,10 @@ module Formtastic
       def to_html
         input_wrapping do
           label_html <<
-          template.content_tag( :div, { class: 'jfu_upload_wrapper' } ) do
-            builder.file_field( method, input_html_options ) <<
-            template.content_tag( :ul )
-          end
+            template.content_tag(:div, { class: 'jfu_upload_wrapper' }) do
+              builder.file_field(method, input_html_options) <<
+                template.content_tag(:ul)
+            end
         end
       end
     end

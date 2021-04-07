@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_admin'
 
 module ActiveAdmin
@@ -13,7 +15,7 @@ module ActiveAdmin
               resource.update field => param
               response = { result: 1, file_name: resource.try( field ).try( :url ) }
             else
-              m = request.headers['CONTENT-RANGE'].match( /[^\s]+\s(\d+)-(\d+)\/(\d+)/ )
+              m = request.headers['CONTENT-RANGE'].match(%r{[^\s]+\s(\d+)-(\d+)/(\d+)})
               if m
                 buffer = param.read
                 pos = m[1].to_i
@@ -21,11 +23,12 @@ module ActiveAdmin
                   tempfile = Rails.root.join('tmp', "upload_#{Time.now.to_i}_#{resource.id}_#{field}")
                   field_data = { original_filename: param.original_filename, tempfile: tempfile }
                   # dir.mkdir unless File.exists?(dir)
-                  # field_data = { original_filename: param.original_filename, tempfile: dir.join(param.tempfile).to_s }  # alternative: "#{resource.class.to_s.tableize}_#{resource.id}_#{Time.now.to_i}"
-                  resource.update_column field, YAML::dump( field_data )
+                  # field_data = { original_filename: param.original_filename, tempfile: dir.join(param.tempfile).to_s }
+                  # # alternative: "#{resource.class.to_s.tableize}_#{resource.id}_#{Time.now.to_i}"
+                  resource.update_column field, YAML.dump(field_data)
                   mode = 'wb'
                 else
-                  field_data = YAML::load resource.read_attribute(field)
+                  field_data = YAML.load resource.read_attribute(field) # rubocop:disable Security/YAMLLoad
                   mode = 'ab'
                 end
                 File.open(field_data[:tempfile], mode) { |f| f.write(buffer) }
