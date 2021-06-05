@@ -1,4 +1,5 @@
-# ActiveAdmin jQuery File Upload [![Gem Version](https://badge.fury.io/rb/activeadmin_jfu_upload.svg)](https://badge.fury.io/rb/activeadmin_jfu_upload) [![Specs](https://github.com/blocknotes/activeadmin_jfu_upload/actions/workflows/specs.yml/badge.svg)](https://github.com/blocknotes/activeadmin_jfu_upload/actions/workflows/specs.yml)
+# ActiveAdmin jQuery File Upload
+[![gem Version](https://badge.fury.io/rb/activeadmin_jfu_upload.svg)](https://badge.fury.io/rb/activeadmin_jfu_upload) [![gem downloads](https://badgen.net/rubygems/dt/activeadmin_jfu_upload)](https://rubygems.org/gems/activeadmin_jfu_upload) [![linters](https://github.com/blocknotes/activeadmin_jfu_upload/actions/workflows/linters.yml/badge.svg)](https://github.com/blocknotes/activeadmin_jfu_upload/actions/workflows/linters.yml) [![specs](https://github.com/blocknotes/activeadmin_jfu_upload/actions/workflows/specs.yml/badge.svg)](https://github.com/blocknotes/activeadmin_jfu_upload/actions/workflows/specs.yml)
 
 An ActiveAdmin 2.x plugin to use [jQuery-File-Upload](https://github.com/blueimp/jQuery-File-Upload) for file uploads in forms.
 
