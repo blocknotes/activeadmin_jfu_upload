@@ -10,7 +10,7 @@ module ActiveAdmin
       class << self
         def upload_file( request, param, resource, field )
           response = { result: 0 }
-          if !param.blank?
+          if param.present?
             if request.headers['CONTENT-RANGE'].blank?
               resource.update field => param
               response = { result: 1, file_name: resource.try( field ).try( :url ) }
@@ -25,7 +25,7 @@ module ActiveAdmin
                   # dir.mkdir unless File.exists?(dir)
                   # field_data = { original_filename: param.original_filename, tempfile: dir.join(param.tempfile).to_s }
                   # # alternative: "#{resource.class.to_s.tableize}_#{resource.id}_#{Time.now.to_i}"
-                  resource.update_column field, YAML.dump(field_data)
+                  resource.update_column field, YAML.dump(field_data) # rubocop:disable Rails/SkipsModelValidations
                   mode = 'wb'
                 else
                   field_data = YAML.load resource.read_attribute(field) # rubocop:disable Security/YAMLLoad
